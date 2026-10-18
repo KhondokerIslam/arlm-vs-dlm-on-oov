@@ -1,17 +1,17 @@
-# Tackling OOV: Masked Language Models vs. Character Diffusion
+# Autoregressive vs. Character Diffusion Language Models on OOV Text
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![Task](https://img.shields.io/badge/Task-SemEval--2019%20Task%206-orange.svg)](https://aclanthology.org/N19-1144.pdf)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **Abstract:** While Large Language Models (LLMs) have achieved remarkable success, generalizing effectively in noisy or out-of-vocabulary (OOV) domains remains a persistent bottleneck. This project presents a controlled experimental comparison between **Masked Language Models (MLM)** and **Discrete Character Diffusion Models (DLM)** on the Offensive Language Identification Dataset (OLID). Utilizing an iterative corrupt-and-reconstruct sequence strategy, DLM demonstrates superior capability in handling OOV tokens, achieving higher precision, recall, and overall F1-scores on OOV-prevalent offensive text classification.
+> **Abstract:** While Large Language Models (LLMs) have achieved remarkable success, generalizing effectively in noisy or out-of-vocabulary (OOV) domains remains a persistent bottleneck. This project presents a controlled experimental comparison between **AutoRegressive Language Models (ARLM)** and **Discrete Character Diffusion Models (DLM)** on the Offensive Language Identification Dataset (OLID). Utilizing an iterative corrupt-and-reconstruct sequence strategy, DLM demonstrates superior capability in handling OOV tokens, achieving higher precision, recall, and overall F1-scores on OOV-prevalent offensive text classification.
 
 ---
 
 ## 📌 Key Findings
 
-* **Robustness to Noise:** The Discrete Character Diffusion Model (DLM) outperforms Masked Language Modeling (MLM) on out-of-vocabulary instances.
+* **Robustness to Noise:** The Discrete Character Diffusion Model (DLM) outperforms AutoRegressive Language Modeling (ARLM) on out-of-vocabulary instances.
 * **Superior Offensive Text Classification:** DLM achieves the highest F1-scores on OOV-prevalent *Offensive* (`OFF`) classification labels.
 * **Better Generalization:** Recall and precision metrics indicate that character-level diffusion builds a more complete sub-word/character understanding across both `OFF` and `NOT` (Non-offensive) classes.
 
@@ -63,7 +63,7 @@ Evaluated on the **OLID (SemEval-2019 Task 6: SubTask A)** classification task a
   </thead>
   <tbody>
     <tr>
-      <td><strong>MLM</strong></td>
+      <td><strong>ARLM</strong></td>
       <td rowspan="2">95.94</td>
       <td rowspan="2">95.47</td>
       <td>23.68</td>
@@ -123,7 +123,7 @@ Evaluated on the **OLID (SemEval-2019 Task 6: SubTask A)** classification task a
 
 # How to Reproduce Experiments
 
-This guide provides step-by-step instructions to reproduce the experimental results from the project **"Tackling OOV: Masked Language Models vs Character Diffusion"**.
+This guide provides step-by-step instructions to reproduce the experimental results from the project **"Autoregressive vs. Character Diffusion Language Models on OOV Text"**.
 
 ---
 
@@ -233,12 +233,12 @@ Run `task_pipeline.py` to train and evaluate the downstream classification task 
    python task_pipeline.py --model_type dlm --test_set_type base --epoch 50
    ```
 
-3. **Evaluate Masked Language Model (MLM) on Processed Test Set:**
+3. **Evaluate AutoRegressive Language Model (ARLM) on Processed Test Set:**
    ```bash
    python task_pipeline.py --model_type mlm --test_set_type processed --epoch 50
    ```
 
-4. **Evaluate Masked Language Model (MLM) on Base Raw Test Set:**
+4. **Evaluate AutoRegressive Language Model (ARLM) on Base Raw Test Set:**
    ```bash
    python task_pipeline.py --model_type mlm --test_set_type base --epoch 50
    ```
