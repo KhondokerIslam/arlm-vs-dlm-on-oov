@@ -178,7 +178,7 @@ cd ..
 
 ---
 
-### Step 2: Train the MLM Base Model (nanoGPT)
+### Step 2: Train the ARLM Base Model (nanoGPT)
 1. Copy `train.bin`, `val.bin`, and `meta.pkl` into your local [nanoGPT](https://github.com/karpathy/nanoGPT) `data/` folder.
 2. Follow the nanoGPT training routine to train the base model on your corpus.
 3. Once training is complete, save the resulting checkpoint file into:
